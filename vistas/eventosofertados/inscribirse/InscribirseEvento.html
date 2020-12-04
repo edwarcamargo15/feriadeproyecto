@@ -17,33 +17,58 @@
 <div class="wrapper">
   <header class="main-header">
     <a href="../../inicio.html" class="logo">
-      <span class="logo-mini"><b>F</b>U</span>
+       <span class="logo-mini"><b>F</b>U</span>
       <span class="logo-lg"><b>Feria</b>UFPS</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
-      <a href="../../inicio.html" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="vistas/inicio.html" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Tienes notificaciones</li>
+              <li>
+                <!-- Inner Menu: contains the notifications -->
+                <ul class="menu">
+                  <li><!-- start notification -->
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> Prueba
+                    </a>
+                  </li>
+                  <!-- end notification -->
+                </ul>
+              </li>
+              <li class="footer"><a href="#">Ver Todo</a></li>
+            </ul>
+          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
               <img src="../../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Pepito Perez</span>
             </a>
             <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-				<p>
+        <p>
                   Pepito Perez - Ejemplo
                 </p>
               </li>
+             <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="DatosPersonales.html" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="Perfil.html" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../../index.html" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../index.html" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -54,11 +79,31 @@
   </header>
   <aside class="main-sidebar">
     <section class="sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Pepito Perez</p>
+          </div>
+      </div>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <li class="active"><a href="../../perfil/DatosPersonales.html"><i class="fa fa-user"></i> <span>Perfil</span></a></li>
-        <li><a href="../EventosOfertados.html"><i class="fa fa-edit"></i> <span>Eventos Ofertados</span></a></li>
-        <li><a href="../../historial/Historial.html"><i class="fa fa-clock-o"></i> <span>Historial</span></a></li>
+        <li class="active"><a href="../../inicio.html"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
+        <li><a href="../../perfil.html"><i class="fa fa-link"></i> <span>Perfil</span></a></li>
+        <li><a href="../../eventosOfertados.html"><i class="fa fa-link"></i> <span>Eventos Ofertados</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Proyectos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../../detalleProyectos.html">Crear Proyectos</a></li>
+            <li><a href="../../detalleEventos.html">Editar Proyectos</a></li>
+          </ul>
+        </li>
+       <li><a href="../historial/Historial.html"><i class="fa fa-link"></i> <span>Historial</span></a></li>
       </ul>
     </section>
   </aside>
