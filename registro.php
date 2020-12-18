@@ -1,3 +1,12 @@
+<?php
+  
+
+  
+
+  
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,53 +37,70 @@
 <!--===============================================================================================-->
 </head>
 <body>
+
+	
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('login/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="controlador/registrarEst.php" method="post">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
-					<a class="login100-form-title p-b-34 p-t-27" href="vistas/inicio.html">
-						Login
-					</a>
-
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="nombre" placeholder="Digite su nombre">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter codigo">
+						<input class="input100" type="text" name="codigo" placeholder="Digite su codigo">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="form-group">
+                  <label>Cargo</label>
+                  <select class="form-control" name="cargo">
+        			<option>Estudiante</option>  
+        			<option>Docente</option>
+        			<option>Ponente</option>
+
+        			</select>
+                </div>
+
+            
+					
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter rol">
+						<label for="exampleFormControlFile1">Cargar Foto</label>
+						<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto">
+						
+
+					</div>
+					
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter telefono">
+						<input class="input100" type="text" name="telefono" placeholder="Digite su telefono">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="contrasena" placeholder="Digite su contraseña">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
-					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label>
-					</div>
+					
 
 					<div class="container-login100-form-btn">
-						<a href="vistas/inicio.html" class="login100-form-btn">Login</a> 
+
+						<a type="button" href="index.php" class="login100-form-btn data-toggle="modal data-target="#exampleModal" data-whatever="@getbootstrap">Regresar</a>
+
+						<button class="login100-form-btn">
+              Registrar
+                    </button> 
 							
-						
-						
-						<button type="button" class="login100-form-btn data-toggle="modal data-target="#exampleModal" data-whatever="@getbootstrap">Registrarse</button>
-
 					</div>
-					
-
-					
-
-					<div class="text-center p-t-90">
-						<a class="txt1" href="#">
-							Forgot Password?
-						</a>
-					</div>
+				
 				</form>
 			</div>
 		</div>
@@ -82,83 +108,7 @@
 	
 
 
-	<div id="dropDownSelect1"></div>
 
-
-<div class="modal fade" id="modalcita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agendar Cita</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <form>
- 
-    <div class="form-group ">
-      <label for="inputNombre">Nombre Completo</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa Nombre Completo">
-    </div>
-    <div class="form-group">
-    <label for="exampleFormControlSelect1">Tipo de Identificación</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-     <option>Seleccione Tipo Documento</option>
-      <option>Tarjeta de Identidad</option>
-      <option>Cedula De Ciudadania</option>
-      <option>Cedula De Extranjeria</option>
-      <option>Pasaporte</option>
-    </select>
-  </div>
-    
-
-  <div class="row">
-    <div class="col">
-      <label for="inputDoc">Número de Identificación: </label>
-      <input type="text" id="identificacion" name="identificacion" placeholder="Ingresa Número de Identificación" class="form-control"  required autofocus>
-    </div>
-    <div class="col">
-      <label for="inputEdad">Edad: </label>
-          <input type="number" id="edad" name="edad" class="form-control" placeholder="Ingresa Edad" required autofocus>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="selecGenero">Género: </label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>Seleccione </option>
-         <option>Femenino</option>
-         <option>Masculino</option>
-       </select>    
-      </div>
-    <div class="col">
-      <label for="inputCelular">Número de Celular: </label>
-          <input type="text" id="cel" name="cel" class="form-control" placeholder="Ingresa Número" required autofocus>
-    </div>
-  </div>  
-  
-  <div class="row">
-    <div class="col">
-      <label for="inputFecha">Fecha de Cita: </label>
-      <input type="date" id="fechnac" name="fechnac" class="form-control"  required autofocus>
-    </div>
-    <div class="col">
-      <label for="inputFecha">Hora de Cita: </label>
-          <input type="time" id="fechnac" name="fechnac" class="form-control"  required autofocus>
-    </div>
-  </div>
-</form>
-      </div>
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-success">Confirmar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>

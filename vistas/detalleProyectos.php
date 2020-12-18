@@ -1,9 +1,19 @@
+<?php
+  session_start();
+
+  if (!empty($_SESSION['active'])) {
+     header("location: ../index.php");
+  }
+
+  require '../aplicacion/feria.php';
+  $cargar=new Feria();
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Buscar Ideas</title>
+  <title>Crear Proyecto</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
@@ -16,7 +26,7 @@
 <body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
-    <a href="/vistas/inicio.html" class="logo">
+    <a href="inicio.php" class="logo">
        <span class="logo-mini"><b>F</b>U</span>
       <span class="logo-lg"><b>Feria</b>UFPS</span>
     </a>
@@ -50,25 +60,25 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../dist/img/avatar5.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Pepito Perez</span>
+              <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/avatar5.png" class="img-circle" alt="User Image">
         <p>
-                  Pepito Perez - Ejemplo
+                  <?php echo $_SESSION['nombre']; ?>
                 </p>
               </li>
              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="Perfil.html" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="Perfil.php" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../index.html" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../../index.php" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -81,17 +91,17 @@
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Pepito Perez</p>
+          <p><?php echo $_SESSION['nombre']; ?></p>
           </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <li class="active"><a href="inicio.html"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
-        <li><a href="perfil.html"><i class="fa fa-link"></i> <span>Perfil</span></a></li>
-        <li><a href="eventosOfertados.html"><i class="fa fa-link"></i> <span>Eventos Ofertados</span></a></li>
+        <li class="active"><a href="inicio.php"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
+        <li><a href="perfil.php"><i class="fa fa-link"></i> <span>Perfil</span></a></li>
+        <li><a href="eventosOfertados.php"><i class="fa fa-link"></i> <span>Eventos Ofertados</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Proyectos</span>
             <span class="pull-right-container">
@@ -99,85 +109,54 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="detalleProyectos.html">Crear Proyectos</a></li>
-            <li><a href="detalleEventos.html">Editar Proyectos</a></li>
+            <li><a href="detalleProyectos.php">Crear Proyectos</a></li>
+            <li><a href="detalleEventos.php">Editar Proyectos</a></li>
           </ul>
         </li>
-<li><a href="historial/Historial.html"><i class="fa fa-link"></i> <span>Historial</span></a></li>
+       <li><a href="historial/Historial.php"><i class="fa fa-link"></i> <span>Historial</span></a></li>
       </ul>
     </section>
   </aside>
- <div class="content-wrapper">
+  <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Eventos disponibles
-        <small>  </small> 
+        Crear
+        <small>Proyecto</small>
       </h1>
     </section>
     <section class="content container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" align="center">
-        </div>
-
-        <div class="box-body table-responsive no-padding">
-          <table class="table table-hover">
-            <tr>
-              <th>TITULO</th>
-              <td>PRACTIC</td>
-            </tr>
-            <tr>
-            <th>Fecha</th>
-              <td>15/10/2020</td>
-            </tr>
-          </table>
-        </div>
-        <div class="box-footer clearfix">
-            <a href="eventosOfertados/inscribirse/InscribirseEvento.html" class="btn btn-sm btn-info btn-flat pull-left">Inscribir</a>
-            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Ver más</a>
-        </div>
-      </div>
-      </div>
-      </div>
-    </div>
+		<div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Datos del Proyecto</h3>
+            </div>
+            <div class="box-body">
+              <form role="form" action="../controlador/registroProyecto.php" method="post">
+                <div class="form-group">
+                  <label>Título</label>
+                  <input type="text" class="form-control" name="titulo" placeholder="Título">
+                </div>
+                <div class="form-group">
+                  <label>Categorias</label>
+                  <select class="form-control" name="categoria">
+                    <?php  $cargar->cargarCategoria(); ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Asignatura</label>
+                  <select class="form-control" name="asignatura">
+                    <?php  $cargar->cargarAsignatura(); ?>
+                  </select>
+                </div>
+				<div class="form-group">
+                 <label>Descripción</label>
+				 <textarea class="form-control" rows="3" name="descripcion" placeholder="Describa su proyecto..."></textarea>
+			    </div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+			</div>
+		</div>	
     </section>
-    <section class="content container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" align="center">
-        </div>
-
-        <div class="box-body table-responsive no-padding">
-          <table class="table table-hover">
-            <tr>
-              <th>TITULO</th>
-              <td>PRACTIC</td>
-            </tr>
-            <tr>
-            <th>Fecha</th>
-              <td>15/10/2020</td>
-            </tr>
-          </table>
-        </div>
-        <div class="box-footer clearfix">
-            <a href="eventosOfertados/inscribirse/InscribirseEvento.html" class="btn btn-sm btn-info btn-flat pull-left">Inscribir</a>
-            
-            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Ver más</a>
-        </div>
-      </div>
-      </div>
-      </div>
-    </div>
-    </section>
-  </div>
   </div>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

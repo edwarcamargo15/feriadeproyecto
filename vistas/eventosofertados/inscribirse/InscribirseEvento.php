@@ -1,27 +1,37 @@
+<?php
+  session_start();
+
+  if (!empty($_SESSION['active'])) {
+     header("location: ../../../index.php");
+  }
+
+  
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Crear Proyecto</title>
+  <title>Inscribirse</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../dist/css/skins/skin-red.min.css">
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../../dist/css/skins/skin-red.min.css">
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
-    <a href="inicio.html" class="logo">
+    <a href="../../inicio.php" class="logo">
        <span class="logo-mini"><b>F</b>U</span>
       <span class="logo-lg"><b>Feria</b>UFPS</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="vistas/inicio.php" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
@@ -50,25 +60,25 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../../../dist/img/avatar5.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Pepito Perez</span>
+              <span class="hidden-xs"> <?php echo $_SESSION['nombre']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../../../dist/img/avatar5.png" class="img-circle" alt="User Image">
         <p>
-                  Pepito Perez - Ejemplo
+                   <?php echo $_SESSION['nombre']; ?>
                 </p>
               </li>
              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="Perfil.html" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="Perfil.php" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../index.html" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../index.php" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -81,17 +91,17 @@
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../../../dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Pepito Perez</p>
+          <p> <?php echo $_SESSION['nombre']; ?></p>
           </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <li class="active"><a href="inicio.html"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
-        <li><a href="perfil.html"><i class="fa fa-link"></i> <span>Perfil</span></a></li>
-        <li><a href="eventosOfertados.html"><i class="fa fa-link"></i> <span>Eventos Ofertados</span></a></li>
+        <li class="active"><a href="../../inicio.php"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
+        <li><a href="../../perfil.php"><i class="fa fa-link"></i> <span>Perfil</span></a></li>
+        <li><a href="../../eventosOfertados.php"><i class="fa fa-link"></i> <span>Eventos Ofertados</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Proyectos</span>
             <span class="pull-right-container">
@@ -99,19 +109,19 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="detalleProyectos.html">Crear Proyectos</a></li>
-            <li><a href="detalleEventos.html">Editar Proyectos</a></li>
+            <li><a href="../../detalleProyectos.php">Crear Proyectos</a></li>
+            <li><a href="../../detalleEventos.php">Editar Proyectos</a></li>
           </ul>
         </li>
-       <li><a href="historial/Historial.html"><i class="fa fa-link"></i> <span>Historial</span></a></li>
+       <li><a href="../../historial/Historial.php"><i class="fa fa-link"></i> <span>Historial</span></a></li>
       </ul>
     </section>
   </aside>
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Crear
-        <small>Proyecto</small>
+        Registrarse
+        <small>Evento</small>
       </h1>
     </section>
     <section class="content container-fluid">
@@ -120,42 +130,56 @@
               <h3 class="box-title">Datos del Proyecto</h3>
             </div>
             <div class="box-body">
-              <form role="form">
+              <form action="#" role="form">
                 <div class="form-group">
                   <label>Título</label>
-                  <input type="text" class="form-control" placeholder="Título">
+                  <input type="text" class="form-control" placeholder="Nombre del Proyecto">
                 </div>
                 <div class="form-group">
-                  <label>Categorias</label>
+                  <label>Participantes</label>
+                  <input type="text" class="form-control" placeholder="Códigos separados por comas">
+                </div>
+                <div class="form-group">
+                  <label>Modalidad</label>
                   <select class="form-control">
-                    <option>Categoria 1</option>
-                    <option>Categoria 2</option>
-                    <option>Categoria 3</option>
-                    <option>Categoria 4</option>
-                    <option>Categoria 5</option>
+                    <option>Modalidad 1</option>
+                    <option>Modalidad 2</option>
+                    <option>Modalidad 3</option>
+                    <option>Modalidad 4</option>
+                    <option>Modalidad 5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Asignatura</label>
+                  <select class="form-control">
+                    <option>Asignatura 1</option>
+                    <option>Asignatura 2</option>
+                    <option>Asignatura 3</option>
+                    <option>Asignatura 4</option>
+                    <option>Asignatura 5</option>
                   </select>
                 </div>
 				<div class="form-group">
                  <label>Descripción</label>
-				 <textarea class="form-control" rows="3" placeholder="Describa su proyecto..."></textarea>
+				 <textarea class="form-control" rows="3" placeholder="Describa su proyecto (Máximo 100 palabras)"></textarea>
 			    </div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
+					<button type="submit" class="btn btn-primary">Registrarse</button>
+        </div>
 			</div>
 		</div>	
     </section>
   </div>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      Proyecto BBDD
+      Proyecto Seminario Integrador III
     </div>
-    <strong>Copyright &copy; 2018 <a href="https://ww2.ufps.edu.co">Universidad Francisco de Paula Santander</a>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; 2020 <a href="https://ww2.ufps.edu.co">Universidad Francisco de Paula Santander</a>.</strong> Todos los derechos reservados.
   </footer>
   <div class="control-sidebar-bg"></div>
 </div>
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 </body>
 </html>
