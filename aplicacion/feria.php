@@ -24,16 +24,16 @@ class Feria extends Conexion{
             $_SESSION['foto']=$data['foto'];
             $_SESSION['telefono']=$data['telefono'];
 
-            if ( $_SESSION['cargo']=='Estudiante') {
+            if ( $_SESSION['cargo']==1) {//student
                            
-               header("location: ../vistas/perfil.php");
-            }
-            else if ( $_SESSION['cargo']=='Administrador') {
-               header("location: ../vistas/perfil.php");
-            }else if ( $_SESSION['cargo']=='Docente') {
-               header("location: ../vistas/perfil.php");
-            }
-         }else if ( $_SESSION['cargo']=='Ponente') {
+              header("location: ../vistas/perfil.php");
+           }
+           else if ( $_SESSION['cargo']==3) {//admin
+              header("location: ../vistas/perfil.php");
+           }else if ( $_SESSION['cargo']==2) {//teacher
+              header("location: ../vistas/perfil.php");
+           }
+         }else if ( $_SESSION['cargo']==4) {//ponente
                header("location: ../vistas/perfil.php");
             
          }
