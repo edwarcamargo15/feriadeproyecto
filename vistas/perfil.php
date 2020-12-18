@@ -215,10 +215,8 @@ if (!empty($_SESSION['active'])) {
 
                           <div class="form-group col-md-6">
                             <label for="nombre">Cargo</label>
+                            <input type="hidden" value="<?php echo $_SESSION['cargo'];?>" id="cargoUser">
                             <select class="form-control" id="cargo" name="cargo" >
-                              <option ><?php echo $_SESSION['cargo']; ?></option>
-                              <option></option>
-                              <option></option>
                             </select>
                           </div>
                           
@@ -233,8 +231,6 @@ if (!empty($_SESSION['active'])) {
                
               </div>
             </div>
-
-
 
           </div>
         </section>
@@ -264,9 +260,78 @@ if (!empty($_SESSION['active'])) {
          $('#cargo').val(datos[2]);
         $('#telefono').val(datos[3]);
         
-       
-
       });
+    </script>
+
+    <script>
+      $( document ).ready(function() {
+        obtenerCargos();
+      });
+
+      /**
+      * @method obtenerCargos
+      * Método que se encarga llamar el servicio que trae el listado de Cargos.
+      */
+      function obtenerCargos() {
+          
+          fetch("../controlador/consulCargos.php", {
+                  method: "GET",
+                  headers: {
+                      Accept: "application/json",
+                      "Content-Type": "application/json",
+                  },
+              })
+              .then(function(response) {
+                  if (response.ok) {
+                      return response.json();
+                  }
+                  throw response;
+              })
+              .then(function(data) {
+                  let cargos = data.cargos;
+                  listarCargos(cargos);
+              })
+              .catch(function(promise) {
+                  if (promise.json) {
+                      promise.json().then(function(response) {
+                          let status = promise.status,
+                              mensaje = response ? response.mensaje : "";
+                          if (status === 401 && mensaje) {
+                              console.log("Advertencia", mensaje);
+                          } else if (mensaje) {
+                            console.log("Error", mensaje);
+                          }
+                      });
+                  } else {
+                      console.log("Error","Ocurrió un error inesperado. Intentelo nuevamente por favor.");
+                  }
+              })
+              .finally(function() {
+                  //
+              });
+      }
+
+      /**
+      * @method listarCargos
+      * Método que se encarga de agregar los Cargos a la lista de valores para registrar una cotizacion.
+      * @param {Array} Cargos Listado de Cargos del sistema
+      */
+      function listarCargos(cargos) {
+          let cargoCmb = $("#cargoUser").val();
+          let input = $("#cargo");
+          for (let index = 0; index < cargos.length; index++) {
+              let cargo = cargos[index];
+              
+                  if(parseInt(cargoCmb)===parseInt(cargo.id)){
+                    opcion = new Option(cargo.descripcion, cargo.id,true,false);
+                  }else{
+                    opcion = new Option(cargo.descripcion, cargo.id);
+                  }
+              $(opcion).html(cargo.descripcion);
+              input.append(opcion);
+          }
+          
+      }
     </script>
   </body>
   </html>
